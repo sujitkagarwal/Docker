@@ -1,0 +1,25 @@
+server:
+  port: 8081
+spring:
+  profiles: docker
+  application:
+      name: customer-service
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://mysql:3306/dev
+    username: root
+    password: dbpass
+   jpa:
+     hibernate:
+       dialect: org.hibernate.dialect.MySQL5Dialect
+       ddl-auto: update
+     database: mysql
+eureka:
+  instance:
+    prefer-ip-address: true
+    non-secure-port: 8181
+  client:
+    register-With-Eureka: true
+    fetch-Registry: true
+    serviceUrl:
+      defaultZone: http://discovery-service:8761/eureka/
