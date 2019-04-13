@@ -1,0 +1,34 @@
+version: "3"
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: mysql
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=dbpass
+      - MYSQL_DATABASE=dev
+  discovery-service:
+    image: sujit/discovery-service
+    container_name: discovery-service
+    ports:
+      - 8761:8761
+  edge-service:
+    image: sujit/edge-service
+    container_name:   edge-service
+    environment:
+     - SPRING_PROFILES_ACTIVE=docker
+    depends_on:
+       - discovery-service
+    ports:
+        - 9000:9000
+  customer-service:
+    image: sujit/customer-service
+    container_name: customer-service
+    environment:
+     - SPRING_PROFILES_ACTIVE=docker
+    depends_on:
+      - discovery-service
+      - mysql
+
+  
