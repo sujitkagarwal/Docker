@@ -13,14 +13,20 @@ services:
     container_name: discovery-service
     ports:
       - 8761:8761
+  edge-service:
+    image: sujit/edge-service
+    container_name: edge-service
+    environment:
+     - SPRING_PROFILES_ACTIVE=docker
+    depends_on:
+       - discovery-service
+    ports:
+        - 9000:9000
   customer-service:
     image: sujit/customer-service
-    container_name:   customer-service
     environment:
      - SPRING_PROFILES_ACTIVE=docker
     depends_on:
       - discovery-service
       - mysql
-    ports:
-      - 8081:8081
-  
+

@@ -25,9 +25,11 @@ while [ -z ${DISCOVERY_SERVICE_READY} ]; do
 done
 
 
-
-
 docker-compose up -d customer-service
+
+sleep 50
+
+docker-compose up -d edge-service
 
 
 

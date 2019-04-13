@@ -10,7 +10,7 @@ import javax.persistence.Id;
  * Created: 09/10/18.
  */
 @Entity
-public class User {
+public class User{
     private Long id;
     private String username;
     private String firstName;

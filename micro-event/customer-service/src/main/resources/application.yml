@@ -1,23 +1,23 @@
 server:
-  port: 8081
+  port: 0
 spring:
   profiles: docker
   application:
       name: customer-service
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://mysql:3306/dev
+    url: jdbc:mysql://mysql:3306/dev?useSSL=false
     username: root
     password: dbpass
-   jpa:
+  jpa:
      hibernate:
        dialect: org.hibernate.dialect.MySQL5Dialect
        ddl-auto: update
-     database: mysql
+     show-sql: false
+
 eureka:
   instance:
     prefer-ip-address: true
-    non-secure-port: 8181
   client:
     register-With-Eureka: true
     fetch-Registry: true

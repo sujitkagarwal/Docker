@@ -19,6 +19,12 @@ class TestController{
 
 	@GetMapping("/hello")
 	String getHello(){
-		return "Hello";
+		return "Hello I am in kubernates with docker";
+	}
+
+
+	@GetMapping("/hello1")
+	String getHello1(){
+		return "Hello I am in kubernates with docker 111";
 	}
 }
