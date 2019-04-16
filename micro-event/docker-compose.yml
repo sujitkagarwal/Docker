@@ -13,6 +13,13 @@ services:
     container_name: discovery-service
     ports:
       - 8761:8761
+  auth-service:
+    image: sujit/auth-service
+    container_name: auth-service
+    depends_on:
+       - discovery-service
+    ports:
+      - 8181:8181
   edge-service:
     image: sujit/edge-service
     container_name: edge-service

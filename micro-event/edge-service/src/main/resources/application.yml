@@ -3,6 +3,7 @@ server:
 spring:
   application:
       name: edge-service
+
 eureka:
   instance:
     prefer-ip-address: true
@@ -11,11 +12,13 @@ eureka:
     fetch-Registry: true
     serviceUrl:
       defaultZone: http://discovery-service:8761/eureka/
-
-
 zuul:
   ignoredServices: "*"
   routes:
     customer-service:
       path: /customer-service/**
 
+security:
+  oauth2:
+    resource:
+      userInfoUri: http://auth-service:8181/uaa/user

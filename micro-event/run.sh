@@ -29,6 +29,10 @@ docker-compose up -d customer-service
 
 sleep 50
 
+docker-compose up -d auth-service
+
+sleep 50
+
 docker-compose up -d edge-service
 
 
